@@ -1,0 +1,4 @@
+<resources>
+    <color name="selected_button_color">#4CAF50</color> <!-- Green for Selected -->
+    <color name="unselected_button_color">#6A1B9A</color> <!-- Purple for Unselected -->
+</resources>

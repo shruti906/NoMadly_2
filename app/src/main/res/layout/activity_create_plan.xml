@@ -1,0 +1,143 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="24dp"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/popup_background"
+            android:padding="24dp"
+            android:elevation="8dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="48dp"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/backarr"
+                android:contentDescription="Back"
+                android:layout_gravity="start" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="Where to?"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <!-- Trip Name Input -->
+            <EditText
+                android:id="@+id/edtTripName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/edittext_bg"
+                android:padding="12dp"
+                android:hint="Trip Name"
+                android:textColor="#000"
+                android:textColorHint="#888" />
+
+            <!-- Destination Input -->
+            <EditText
+                android:id="@+id/edtDestination"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/edittext_bg"
+                android:padding="12dp"
+                android:hint="Search for your destination"
+                android:textColor="#000"
+                android:textColorHint="#888" />
+
+            <!-- Start Date -->
+            <EditText
+                android:id="@+id/edtStartDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Start Date"
+                android:focusable="false"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/edittext_bg"
+                android:padding="12dp"
+                android:textColor="#000"
+                android:textColorHint="#888" />
+
+            <!-- End Date -->
+            <EditText
+                android:id="@+id/edtEndDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="End Date"
+                android:focusable="false"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/edittext_bg"
+                android:padding="12dp"
+                android:textColor="#000"
+                android:textColorHint="#888" />
+
+            <!-- Budget -->
+            <EditText
+                android:id="@+id/edtBudget"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/edittext_bg"
+                android:padding="12dp"
+                android:hint="Budget"
+                android:inputType="numberDecimal"
+                android:textColor="#000"
+                android:textColorHint="#888" />
+
+            <!-- Trip Type -->
+            <RadioGroup
+                android:id="@+id/rgTripType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbLeisure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Leisure"
+                    android:textColor="#000"
+                    android:minHeight="48dp"
+                    android:padding="8dp" />
+
+                <RadioButton
+                    android:id="@+id/rbBusiness"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Business"
+                    android:textColor="#000"
+                    android:minHeight="48dp"
+                    android:padding="8dp" />
+
+            </RadioGroup>
+
+            <!-- Start Button -->
+            <Button
+                android:id="@+id/btnSubmitPlan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="START"
+                android:backgroundTint="#A9C7F9"
+                android:textColor="#fff" />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

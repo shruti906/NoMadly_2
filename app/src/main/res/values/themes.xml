@@ -1,0 +1,14 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MyApplication" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Set your primary background color -->
+        <item name="colorPrimary">#2E3C39</item>
+        <item name="colorPrimaryContainer">#2E3C39</item>
+        <item name="android:statusBarColor">#2E3C39</item>
+        <item name="android:navigationBarColor">#2E3C39</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item> <!-- Ensures white text/icons -->
+
+    </style>
+
+    <style name="Theme.MyApplication" parent="Base.Theme.MyApplication"/>
+</resources>
