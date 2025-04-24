@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/rounded_white"
+    android:elevation="2dp"
+    android:padding="8dp"
+    android:layout_marginBottom="8dp">
+
+    <ImageView
+        android:id="@+id/tripImage"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/trip1" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="8dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tripName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vancouver"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tripDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dec 24 - Dec 30"
+            android:textSize="14sp"
+            android:textColor="#888888" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/tripIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/trip2" />
+</LinearLayout>

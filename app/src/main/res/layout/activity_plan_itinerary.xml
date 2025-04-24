@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#E0F3AE">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Top Activities Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@android:color/white"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
+            android:elevation="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Top Activities"
+                android:textSize="18sp"
+                android:textColor="#333"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/edtActivityName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Activity Name"
+                android:background="@drawable/input_border"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp" />
+
+            <EditText
+                android:id="@+id/edtActivityTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Activity Time"
+                android:background="@drawable/input_border"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp" />
+
+            <Button
+                android:id="@+id/btnAddActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Activity"
+                android:backgroundTint="#4CAF50"
+                android:textColor="#FFF"
+                android:layout_marginBottom="10dp" />
+        </LinearLayout>
+
+        <!-- Dynamic Activity List -->
+        <LinearLayout
+            android:id="@+id/layoutActivityList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Itinerary Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@android:color/white"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
+            android:elevation="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Itinerary"
+                android:textSize="18sp"
+                android:textColor="#333"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Removed "Enter Day's Activity" Input Field -->
+            <Button
+                android:id="@+id/btnAddItinerary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Itinerary"
+                android:backgroundTint="#4CAF50"
+                android:textColor="#FFF"
+                android:layout_marginBottom="10dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutItineraryList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Food Recommendations -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@android:color/white"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
+            android:elevation="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Food Recommendations"
+                android:textSize="18sp"
+                android:textColor="#333"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/edtFoodItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Food Item"
+                android:background="@drawable/input_border"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp" />
+
+            <Button
+                android:id="@+id/btnAddFood"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Food"
+                android:backgroundTint="#4CAF50"
+                android:textColor="#FFF"
+                android:layout_marginBottom="10dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutFoodList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Packing Checklist Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@android:color/white"
+            android:padding="12dp"
+            android:elevation="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Packing Checklist"
+                android:textSize="18sp"
+                android:textColor="#333"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/edtPackingItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Item to Pack"
+                android:background="@drawable/input_border"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp" />
+
+            <Button
+                android:id="@+id/btnAddPacking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Item"
+                android:backgroundTint="#4CAF50"
+                android:textColor="#FFF"
+                android:layout_marginBottom="10dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutPackingList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

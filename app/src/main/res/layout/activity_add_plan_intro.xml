@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E0F3AE">
+
+    <!-- Search Bar -->
+    <EditText
+        android:id="@+id/edtSearchTrips"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Search trips"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:background="@drawable/search_bar_background"
+        android:textColorHint="#666666"
+        android:textColor="#333333"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp" />
+
+    <!-- White Box Container -->
+    <LinearLayout
+        android:id="@+id/boxNoPlan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtSearchTrips"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="@android:color/white"
+        android:elevation="4dp"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- No Plans Text -->
+        <TextView
+            android:id="@+id/txtNoPlans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No plans created yet"
+            android:textSize="18sp"
+            android:textColor="#333333"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginTop="24dp" />
+
+        <!-- Create Plan Button -->
+        <Button
+            android:id="@+id/btnCreatePlan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create Plan"
+            android:backgroundTint="#4CAF50"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:layout_marginTop="32dp"
+            android:layout_gravity="center" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Expense List -->
+    <ListView
+        android:id="@+id/lvExpenses"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@id/btnAddExpense"
+        android:divider="#E0E0E0"
+        android:dividerHeight="1dp" />
+
+    <!-- Add Expense Button -->
+    <Button
+        android:id="@+id/btnAddExpense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Expense"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="#FF9800"
+        android:textColor="#FFFFFF" />
+</RelativeLayout>

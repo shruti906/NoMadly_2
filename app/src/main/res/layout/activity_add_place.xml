@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:background="@drawable/card_bg"
+    android:elevation="4dp">
+
+    <TextView
+        android:id="@+id/txtDayTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Day 1"
+        android:textSize="18sp"
+        android:textColor="#333"
+        android:textStyle="bold"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Morning, Afternoon, Night Selection -->
+    <RadioGroup
+        android:id="@+id/radioGroupTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radioMorning"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Morning"
+            android:background="@drawable/button_selector"
+            android:textColor="@color/button_text_selector" />
+
+        <RadioButton
+            android:id="@+id/radioAfternoon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Afternoon"
+            android:background="@drawable/button_selector"
+            android:textColor="@color/button_text_selector" />
+
+        <RadioButton
+            android:id="@+id/radioNight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Night"
+            android:background="@drawable/button_selector"
+            android:textColor="@color/button_text_selector" />
+    </RadioGroup>
+
+    <!-- Name of the place -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name of the place"
+        android:textColor="#333"
+        android:textSize="14sp"
+        android:layout_marginTop="12dp" />
+
+    <EditText
+        android:id="@+id/edtPlaceName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter place name"
+        android:background="@drawable/input_border"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp" />
+
+    <!-- Description -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description (optional)"
+        android:textColor="#333"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/edtPlaceDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter description"
+        android:background="@drawable/input_border"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp" />
+
+    <!-- Add Another Place -->
+    <Button
+        android:id="@+id/btnAddAnother"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add a place ➕"
+        android:textColor="#FFF"
+        android:backgroundTint="#4CAF50"
+        android:layout_marginTop="10dp" />
+
+    <!-- Save and Cancel -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:layout_marginTop="12dp">
+
+        <Button
+            android:id="@+id/btnSavePlace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:textColor="#333"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/btnCancelPlace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:textColor="#333" />
+    </LinearLayout>
+</LinearLayout>
