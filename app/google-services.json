@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "219801015699",
+    "project_id": "nomadly-e24fa",
+    "storage_bucket": "nomadly-e24fa.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:219801015699:android:257b69acf558b194a64466",
+        "android_client_info": {
+          "package_name": "com.example.nomadly"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVA7rmDIaOzft2IUj8PA5_4-qLW17tvZY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
