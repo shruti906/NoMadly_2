@@ -24,7 +24,7 @@
         android:background="@drawable/input_border"
         android:hint="Enter your email"
         android:padding="16dp"
-        android:textColor="#FFFFFF"
+        android:textColor="#020000"
         android:textColorHint="#AAAAAA"
         android:inputType="textEmailAddress"/>
 
@@ -37,7 +37,7 @@
         android:background="@drawable/input_border"
         android:hint="Enter your password"
         android:padding="16dp"
-        android:textColor="#FFFFFF"
+        android:textColor="#020000"
         android:textColorHint="#AAAAAA"
         android:inputType="textPassword"/>
 

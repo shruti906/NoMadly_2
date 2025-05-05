@@ -5,10 +5,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -16,12 +15,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
+    private static final String TAG = "LoginActivity";
 
     EditText usernameEditText, passwordEditText;
     ImageView togglePasswordVisibility;
     CheckBox rememberMeCheckbox;
     Button loginButton;
     SharedPreferences sharedPreferences;
+    DatabaseHelper databaseHelper;
     boolean passwordVisible = false;
 
     public static final String PREFS_NAME = "NomadlyPrefs";
@@ -31,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        databaseHelper = new DatabaseHelper(this);
         usernameEditText = findViewById(R.id.usernameEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         togglePasswordVisibility = findViewById(R.id.togglePasswordVisibility);
@@ -38,6 +40,9 @@ public class LoginActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.loginButton);
 
         sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+
+        // Print all users in database for debugging
+        databaseHelper.printAllUsers();
 
         togglePasswordVisibility.setOnClickListener(v -> {
             passwordVisible = !passwordVisible;
@@ -52,21 +57,31 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         loginButton.setOnClickListener(view -> {
-            String enteredUsername = usernameEditText.getText().toString();
-            String enteredPassword = passwordEditText.getText().toString();
+            String enteredEmail = usernameEditText.getText().toString().trim();
+            String enteredPassword = passwordEditText.getText().toString().trim();
 
-            String savedUsername = sharedPreferences.getString("username", "admin");
-            String savedPassword = sharedPreferences.getString("password", "admin");
+            Log.d(TAG, "Login attempt - Email: " + enteredEmail);
 
-            if (TextUtils.isEmpty(enteredUsername) || TextUtils.isEmpty(enteredPassword)) {
+            if (TextUtils.isEmpty(enteredEmail) || TextUtils.isEmpty(enteredPassword)) {
                 Toast.makeText(LoginActivity.this, "All fields are required!", Toast.LENGTH_SHORT).show();
-            } else if (enteredUsername.equals(savedUsername) && enteredPassword.equals(savedPassword)) {
+                Log.d(TAG, "Login failed - Empty fields");
+                return;
+            }
+
+            // Check user credentials in database
+            boolean isValidUser = databaseHelper.checkUser(enteredEmail, enteredPassword);
+            Log.d(TAG, "Login validation result: " + isValidUser);
+
+            if (isValidUser) {
                 Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "Login successful for user: " + enteredEmail);
 
                 if (rememberMeCheckbox.isChecked()) {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putBoolean("remember", true);
+                    editor.putString("email", enteredEmail);
                     editor.apply();
+                    Log.d(TAG, "Remember me enabled for user: " + enteredEmail);
                 }
 
                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
@@ -74,6 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
             } else {
                 Toast.makeText(LoginActivity.this, "Invalid Credentials!", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "Login failed - Invalid credentials for user: " + enteredEmail);
             }
         });
     }

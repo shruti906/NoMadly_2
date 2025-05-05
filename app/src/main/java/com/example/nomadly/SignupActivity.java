@@ -16,11 +16,14 @@ public class SignupActivity extends AppCompatActivity {
     Button createAccountButton;
     TextView loginNowText;
     ImageView backButton;
+    DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+        databaseHelper = new DatabaseHelper(this);
 
         fullNameEditText = findViewById(R.id.fullNameEditText);
         emailEditText = findViewById(R.id.emailEditText);
@@ -42,9 +45,23 @@ public class SignupActivity extends AppCompatActivity {
                     || phone.isEmpty() || nationality.isEmpty()) {
                 Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             } else {
-                Intent intent = new Intent(SignupActivity.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
+                // Check if email already exists
+                if (databaseHelper.checkEmailExists(email)) {
+                    Toast.makeText(this, "Email already exists", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Add user to database
+                boolean success = databaseHelper.addUser(fullName, email, password, phone, nationality);
+                
+                if (success) {
+                    Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(SignupActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(this, "Registration failed", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
