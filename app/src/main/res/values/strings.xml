@@ -1,3 +1,33 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <!-- App Name -->
+    <string name="app_name">Nomadly</string>
+
+    <!-- Budget & Icons -->
+    <string name="budget_icon">Budget Icon</string>
+    <string name="coin">Coin</string>
+
+    <!-- Budget Texts -->
+    <string name="budget_display">Budget: ₹%1$d</string>
+    <string name="remaining_display">Remaining: ₹%1$d</string>
+
+    <!-- Placeholders -->
+    <string name="name_placeholder">John Doe</string>
+    <string name="purpose_placeholder">Dinner</string>
+    <string name="amount_placeholder">₹350</string>
+
+    <!-- Labels -->
+    <string name="profile">Profile</string>
+    <string name="add_expense">Add Expense</string>
+    <string name="save">Save</string>
+    <string name="back_to_main">Back to Main</string>
+
+    <!-- Form Inputs -->
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_purpose">Enter Purpose</string>
+    <string name="enter_amount">Enter Amount</string>
+
+    <!-- Toasts & Messages -->
+    <string name="expense_saved">Expense saved successfully!</string>
+    <string name="fill_all_fields">Please fill all fields</string>
+    <string name="invalid_amount">Enter a valid amount</string>
 </resources>

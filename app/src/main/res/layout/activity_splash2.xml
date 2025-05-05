@@ -29,9 +29,6 @@
         android:layout_height="16dp" />
 
     <!-- App Icon -->
-
-    <!-- Prompt Text -->
-
     <ImageView
         android:layout_width="120dp"
         android:layout_height="120dp"
@@ -41,6 +38,7 @@
         android:src="@drawable/applogo"
         app:tint="@android:color/black" />
 
+    <!-- Prompt Text -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,8 +50,6 @@
         android:layout_marginBottom="32dp" />
 
     <!-- Sign Up Button -->
-
-    <!-- OR separator -->
     <Button
         android:id="@+id/signupButton"
         android:layout_width="match_parent"
@@ -65,6 +61,7 @@
         android:textAllCaps="false"
         android:textColor="@android:color/black" />
 
+    <!-- OR separator -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -73,28 +70,18 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp" />
 
-    <!-- Google Sign-in Button -->
-    <LinearLayout
+    <!-- Log In Button (new) -->
+    <Button
+        android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:orientation="horizontal"
-        android:gravity="center"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@android:color/white"
-        android:background="@drawable/rounded_button">
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="#C5CF9B"
+        android:text="Log in"
+        android:textAllCaps="false"
+        android:textColor="@android:color/black" />
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/google"
-            android:layout_marginEnd="8dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Continue with Google"
-            android:textColor="#000000"
-            android:textSize="16sp"/>
-    </LinearLayout>
+
 </LinearLayout>
