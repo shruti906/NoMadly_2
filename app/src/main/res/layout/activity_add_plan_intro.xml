@@ -29,42 +29,73 @@
         android:drawablePadding="10dp"
         android:textColor="#000"
         android:textColorHint="#888888"
-        android:layout_marginBottom="24dp" />
+        android:layout_marginBottom="16dp" />
 
-    <!-- Centered Box -->
-    <LinearLayout
+    <!-- Heading -->
+    <TextView
+        android:id="@+id/txtHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upcoming Trips"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Scrollable Trip List Area -->
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:background="@android:color/white"
-        android:elevation="4dp"
-        android:padding="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginHorizontal="4dp"
-        android:layout_gravity="center_horizontal">
+        android:fillViewport="true">
 
-        <Button
-            android:id="@+id/btnCreatePlan"
+        <LinearLayout
+            android:id="@+id/tripListContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="16dp"
+            android:gravity="center_horizontal" />
+    </ScrollView>
+
+    <!-- No Plans Message -->
+    <TextView
+        android:id="@+id/txtNoPlans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Plans Created Yet!"
+        android:textColor="#888888"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        android:visibility="gone" />
+
+    <!-- Create Plan Button at Bottom -->
+    <LinearLayout
+        android:id="@+id/btnCreatePlanContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingVertical="12dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="#B6D5FF"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/create"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/btnCreatePlanText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Create Plan"
             android:textColor="#000"
-            android:drawableStart="@drawable/create"
-            android:drawablePadding="8dp"
-            android:backgroundTint="#B6D5FF"
-            android:paddingHorizontal="24dp"
-            android:paddingVertical="12dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/rounded_button" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="No Plans Created Yet!"
-            android:textColor="#000"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
     </LinearLayout>
+
 </LinearLayout>

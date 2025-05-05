@@ -2,75 +2,83 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:background="#F0F0E8"
+    android:padding="20dp">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
-        <!-- Trip Details Card -->
+        <!-- Card Container -->
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:background="@drawable/card"
-            android:elevation="4dp"
-            android:layout_marginBottom="16dp">
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:background="@drawable/card1"
+            android:layout_marginBottom="24dp"
+            android:elevation="4dp">
 
             <TextView
                 android:id="@+id/txtTripName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Trip Name"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="#333333" />
+                android:textColor="#000"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#DDDDDD"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp" />
 
             <TextView
                 android:id="@+id/txtDestination"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Destination"
+                android:text="Destination: "
                 android:textSize="16sp"
-                android:textColor="#666666"
-                android:layout_marginTop="4dp" />
+                android:textColor="#555" />
 
             <TextView
                 android:id="@+id/txtStartDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Start Date"
-                android:textSize="14sp"
-                android:textColor="#666666"
+                android:text="Start Date: "
+                android:textSize="16sp"
+                android:textColor="#555"
                 android:layout_marginTop="4dp" />
 
             <TextView
                 android:id="@+id/txtEndDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="End Date"
-                android:textSize="14sp"
-                android:textColor="#666666"
+                android:text="End Date: "
+                android:textSize="16sp"
+                android:textColor="#555"
                 android:layout_marginTop="4dp" />
 
             <TextView
                 android:id="@+id/txtBudget"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Budget"
-                android:textSize="14sp"
-                android:textColor="#666666"
+                android:text="Budget: "
+                android:textSize="16sp"
+                android:textColor="#555"
                 android:layout_marginTop="4dp" />
 
             <TextView
                 android:id="@+id/txtTripType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Trip Type"
-                android:textSize="14sp"
-                android:textColor="#666666"
+                android:text="Trip Type: "
+                android:textSize="16sp"
+                android:textColor="#555"
                 android:layout_marginTop="4dp" />
         </LinearLayout>
 
@@ -79,8 +87,12 @@
             android:id="@+id/btnEditPlan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Edit Plan"
-            android:backgroundTint="#4CAF50"
-            android:textColor="#FFFFFF" />
+            android:text="Edit This Plan"
+            android:backgroundTint="#2196F3"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:padding="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp" />
     </LinearLayout>
 </ScrollView>
