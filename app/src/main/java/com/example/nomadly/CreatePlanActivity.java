@@ -3,10 +3,10 @@ package com.example.nomadly;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -18,13 +18,14 @@ public class CreatePlanActivity extends AppCompatActivity {
     EditText edtTripName, edtDestination, edtStartDate, edtEndDate, edtBudget;
     RadioGroup rgTripType;
     Button btnSubmitPlan;
+    Trip tripToEdit = null;
+    boolean isEditMode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_plan);
 
-        // Initialize views
         edtTripName = findViewById(R.id.edtTripName);
         edtDestination = findViewById(R.id.edtDestination);
         edtStartDate = findViewById(R.id.edtStartDate);
@@ -33,36 +34,73 @@ public class CreatePlanActivity extends AppCompatActivity {
         rgTripType = findViewById(R.id.rgTripType);
         btnSubmitPlan = findViewById(R.id.btnSubmitPlan);
 
-        // Date picker for Start Date
         edtStartDate.setOnClickListener(v -> showDatePicker(edtStartDate));
-
-        // Date picker for End Date
         edtEndDate.setOnClickListener(v -> showDatePicker(edtEndDate));
 
-        // Submit Plan Button Click
+        int tripId = getIntent().getIntExtra("tripId", -1);
+        if (tripId != -1) {
+            isEditMode = true;
+            loadTripFromDatabase(tripId);
+        }
+
         btnSubmitPlan.setOnClickListener(v -> {
             if (validateInputs()) {
-                savePlanData();
+                if (isEditMode) updateTrip();
+                else insertTrip();
             }
         });
+        ImageView imgBack = findViewById(R.id.imgBack);
+        imgBack.setOnClickListener(v -> {
+            Intent intent = new Intent(CreatePlanActivity.this, AddPlanIntroActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
+// your other code continues here...
+
     }
 
-    // Show date picker
+    private void loadTripFromDatabase(int id) {
+        new Thread(() -> {
+            TripDao dao = TripDatabaseClient.getInstance(getApplicationContext()).getAppDatabase().tripDao();
+            tripToEdit = dao.getTripById(id);
+
+            runOnUiThread(() -> {
+                if (tripToEdit != null) {
+                    edtTripName.setText(tripToEdit.tripName);
+                    edtDestination.setText(tripToEdit.destination);
+                    edtStartDate.setText(tripToEdit.startDate);
+                    edtEndDate.setText(tripToEdit.endDate);
+                    edtBudget.setText(String.valueOf(tripToEdit.budget));
+                    setRadioSelection(tripToEdit.tripType);
+                }
+            });
+        }).start();
+    }
+
+    private void setRadioSelection(String tripType) {
+        for (int i = 0; i < rgTripType.getChildCount(); i++) {
+            RadioButton rb = (RadioButton) rgTripType.getChildAt(i);
+            if (rb.getText().toString().equalsIgnoreCase(tripType)) {
+                rb.setChecked(true);
+                break;
+            }
+        }
+    }
+
     private void showDatePicker(final EditText dateField) {
         Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-        DatePickerDialog datePickerDialog = new DatePickerDialog(CreatePlanActivity.this,
-                (view, year1, month1, dayOfMonth) -> {
-                    String selectedDate = dayOfMonth + "/" + (month1 + 1) + "/" + year1;
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                (view, year, month, dayOfMonth) -> {
+                    String selectedDate = dayOfMonth + "/" + (month + 1) + "/" + year;
                     dateField.setText(selectedDate);
-                }, year, month, day);
+                },
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();
     }
 
-    // Validate user inputs
     private boolean validateInputs() {
         if (edtTripName.getText().toString().isEmpty() ||
                 edtDestination.getText().toString().isEmpty() ||
@@ -70,21 +108,49 @@ public class CreatePlanActivity extends AppCompatActivity {
                 edtEndDate.getText().toString().isEmpty() ||
                 edtBudget.getText().toString().isEmpty() ||
                 rgTripType.getCheckedRadioButtonId() == -1) {
-
             Toast.makeText(this, "Please fill all fields!", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
     }
 
-    // Save plan data and navigate to PlanItineraryActivity
-    private void savePlanData() {
-        // Show confirmation message
-        Toast.makeText(this, "Plan Created Successfully!", Toast.LENGTH_SHORT).show();
+    private void insertTrip() {
+        Trip trip = new Trip(
+                edtTripName.getText().toString(),
+                edtDestination.getText().toString(),
+                edtStartDate.getText().toString(),
+                edtEndDate.getText().toString(),
+                Double.parseDouble(edtBudget.getText().toString()),
+                ((RadioButton) findViewById(rgTripType.getCheckedRadioButtonId())).getText().toString()
+        );
 
-        // Navigate to PlanItineraryActivity
-        Intent intent = new Intent(CreatePlanActivity.this, PlanItineraryActivity.class);
-        startActivity(intent);
-        finish();
+        new Thread(() -> {
+            TripDao dao = TripDatabaseClient.getInstance(getApplicationContext()).getAppDatabase().tripDao();
+            dao.insertTrip(trip);
+            runOnUiThread(() -> {
+                Toast.makeText(this, "Plan Created Successfully!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, PlanItineraryActivity.class)); // <-- Go to itinerary
+                finish();
+            });
+        }).start();
+    }
+
+    private void updateTrip() {
+        tripToEdit.tripName = edtTripName.getText().toString();
+        tripToEdit.destination = edtDestination.getText().toString();
+        tripToEdit.startDate = edtStartDate.getText().toString();
+        tripToEdit.endDate = edtEndDate.getText().toString();
+        tripToEdit.budget = Double.parseDouble(edtBudget.getText().toString());
+        tripToEdit.tripType = ((RadioButton) findViewById(rgTripType.getCheckedRadioButtonId())).getText().toString();
+
+        new Thread(() -> {
+            TripDao dao = TripDatabaseClient.getInstance(getApplicationContext()).getAppDatabase().tripDao();
+            dao.updateTrip(tripToEdit);
+            runOnUiThread(() -> {
+                Toast.makeText(this, "Plan Updated Successfully!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, PlanItineraryActivity.class)); // <-- Go to itinerary
+                finish();
+            });
+        }).start();
     }
 }

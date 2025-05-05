@@ -1,6 +1,7 @@
 package com.example.nomadly;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,6 +59,7 @@ public class PlanItineraryActivity extends AppCompatActivity {
         btnAddPacking = findViewById(R.id.btnAddPacking);
         layoutPackingList = findViewById(R.id.layoutPackingList);
 
+
         // Add activity button click
         btnAddActivity.setOnClickListener(v -> addItem(layoutActivityList, edtActivityName, edtActivityTime));
 
@@ -69,6 +71,12 @@ public class PlanItineraryActivity extends AppCompatActivity {
 
         // Add packing button click
         btnAddPacking.setOnClickListener(v -> addItem(layoutPackingList, edtPackingItem, null));
+
+        Button btnSavePlan = findViewById(R.id.btnSavePlan);
+        btnSavePlan.setOnClickListener(v -> {
+            // Navigate to AddPlanIntroActivity
+            startActivity(new Intent(PlanItineraryActivity.this, AddPlanIntroActivity.class));
+        });
     }
 
     // Add items dynamically with delete button
