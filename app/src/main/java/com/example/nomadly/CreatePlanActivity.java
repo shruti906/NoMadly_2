@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -48,6 +49,15 @@ public class CreatePlanActivity extends AppCompatActivity {
                 else insertTrip();
             }
         });
+        ImageView imgBack = findViewById(R.id.imgBack);
+        imgBack.setOnClickListener(v -> {
+            Intent intent = new Intent(CreatePlanActivity.this, AddPlanIntroActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
+// your other code continues here...
+
     }
 
     private void loadTripFromDatabase(int id) {
@@ -119,7 +129,7 @@ public class CreatePlanActivity extends AppCompatActivity {
             dao.insertTrip(trip);
             runOnUiThread(() -> {
                 Toast.makeText(this, "Plan Created Successfully!", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(this, PlanItineraryActivity.class));
+                startActivity(new Intent(this, PlanItineraryActivity.class)); // <-- Go to itinerary
                 finish();
             });
         }).start();
@@ -138,6 +148,7 @@ public class CreatePlanActivity extends AppCompatActivity {
             dao.updateTrip(tripToEdit);
             runOnUiThread(() -> {
                 Toast.makeText(this, "Plan Updated Successfully!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, PlanItineraryActivity.class)); // <-- Go to itinerary
                 finish();
             });
         }).start();

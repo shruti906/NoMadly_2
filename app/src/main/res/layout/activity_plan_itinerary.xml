@@ -192,5 +192,16 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginBottom="20dp" />
+
+        <Button
+            android:id="@+id/btnSavePlan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Plan"
+            android:backgroundTint="#2196F3"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="30dp" />
+
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
